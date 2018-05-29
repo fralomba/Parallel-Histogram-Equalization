@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/sequential_histogram_equalization"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/sequential_histogram_equalization/cmake-build-debug
