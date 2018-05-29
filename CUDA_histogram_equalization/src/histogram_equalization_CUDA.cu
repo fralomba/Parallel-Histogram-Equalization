@@ -33,9 +33,9 @@ __global__ void make_histogram(unsigned char *image, int width, int height, int 
 		int G = image[index + 1];
 		int B = image[index + 2];
 
-		int Y = R * 0.299 + G * 0.587 + B * 0.114;
-		int U = R * -0.168736 + G * -0.331264 + B * 0.500 + 128;
-		int V = R * 0.500 + G * -0.418688 + B * -0.081312 + 128;
+		int Y = R * .299000 + G * .587000 + B * .114000;
+		int U = R * -.168736 + G * -0.331264 + B * .500000 + 128;
+		int V = R * .500000 + G * -.418688 + B * -.081312 + 128;
 
 		atomicAdd(&(histogram[Y]),1);
 
@@ -69,7 +69,7 @@ __global__ void YUV2RGB(unsigned char *image, int *cumulative_dist,int *histogra
 		int V = image[index + 2];
 
 		unsigned char R = (unsigned char)max(0, min(255,(int)(Y + 1.4075 * (V - 128))));
-		unsigned char G = (unsigned char)max(0, min(255,(int)(Y - 1.3455 * (U - 128) - (0.7169 * (V - 128)))));
+		unsigned char G = (unsigned char)max(0, min(255,(int)(Y - 1.3455 * (U - 128) - (.7169 * (V - 128)))));
 		unsigned char B = (unsigned char)max(0, min(255,(int)(Y + 1.7790 * (U - 128))));
 
 		image[index] = R;
@@ -89,7 +89,7 @@ static void CheckCudaErrorAux (const char *file, unsigned line, const char *stat
 
 int main(){
 
-	Mat image = imread("src/images/tree.jpg");		//load the image
+	Mat image = imread("src/images/desk.jpg");		//load the image
 
 	if(!image.data){
 		cout << "no image found";
@@ -153,7 +153,7 @@ int main(){
 	cout << "correctly freed memory \n";
 
 	Mat final_image = Mat(Size(width,height), CV_8UC3, host_image);
-	imwrite("src/saved/tree.jpg", final_image);						//save equalized RGB image
+	imwrite("src/saved/desk.jpg", final_image);						//save equalized RGB image
 	cout << "correctly saved image";
 
 	return 0;
