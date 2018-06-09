@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/sequential_histogram_equalization/main.cpp
+/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/Parallel-Histogram-Equalization/sequential_histogram_equalization/main.cpp
 iostream
 -
 opencv2/highgui/highgui.hpp

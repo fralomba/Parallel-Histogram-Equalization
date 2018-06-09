@@ -85,7 +85,7 @@ void equalize(Mat image, int equalized[], int yuv_vector[]){
 int main(){
 
     // Load the image
-    Mat image = imread("../img/desk.jpg");
+    Mat image = imread("../img/duomo.jpg");
 
     namedWindow("Original Image");
     resize(image, image, Size(800,600));

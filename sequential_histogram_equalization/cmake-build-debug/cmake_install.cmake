@@ -1,4 +1,4 @@
-# Install script for directory: /Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/sequential_histogram_equalization
+# Install script for directory: /Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/Parallel-Histogram-Equalization/sequential_histogram_equalization
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/sequential_histogram_equalization/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/Parallel-Histogram-Equalization/sequential_histogram_equalization/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
