@@ -10,9 +10,12 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <string>
 
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
+#include <sys/time.h>
+#include <time.h>
 
 using namespace std;
 using namespace cv;
@@ -88,26 +91,27 @@ static void CheckCudaErrorAux (const char *file, unsigned line, const char *stat
 }
 
 int main(){
+	string folder_path = "/home/lombardiminervini/cuda-workspace/histogram_equalization_CUDA/src/images/";
+	string image_path = "car.jpg";
 
-	Mat image = imread("src/images/desk.jpg");		//load the image
+	Mat image = imread(folder_path + image_path);		//load the image
 
 	if(!image.data){
 		cout << "no image found";
 		return -1;
 	}
 
+	struct timeval start, end;
+	gettimeofday(&start, NULL);
+
 	int width = image.cols;
 	int height = image.rows;
 
-	int host_histogram[256];						//cpu histogram
 	int host_equalized[256];						//cpu equalized histogram
 	int host_cumulative_dist[256];
 
 	unsigned char *host_image = image.ptr();		//Mat image to array image
-
-	for(int i = 0; i < 256; i++){
-		host_histogram[i] = 0;
-	}
+	int host_histogram[256] = {0};					//cpu histogram
 
 	unsigned char *device_image;	//gpu image
 
@@ -115,20 +119,21 @@ int main(){
 	int *device_equalized;			//gpu equalized histogram
 	int *device_cumulative_dist;	//gpu cumulative dist.
 
-	CUDA_CHECK_RETURN(cudaMalloc(&device_image, sizeof(char) * (width * height * 3)));										//gpu space allocation
-	CUDA_CHECK_RETURN(cudaMalloc(&device_histogram, sizeof(int) * 256));													//
-	CUDA_CHECK_RETURN(cudaMalloc(&device_equalized, sizeof(int) * 256));													//
-	CUDA_CHECK_RETURN(cudaMalloc(&device_cumulative_dist, sizeof(int) * 256));												//
 
-	CUDA_CHECK_RETURN(cudaMemcpy(device_image, host_image, sizeof(char) * (width * height * 3), cudaMemcpyHostToDevice));	//copy to gpu
-	CUDA_CHECK_RETURN(cudaMemcpy(device_histogram, host_histogram, sizeof(int) * 256, cudaMemcpyHostToDevice));				//
+	cudaMalloc((void **)&device_image, sizeof(char) * (width * height * 3));									//gpu space allocation
+	cudaMalloc((void **)&device_histogram, sizeof(int) * 256);													//
+	cudaMalloc((void **)&device_equalized, sizeof(int) * 256);													//
+	cudaMalloc((void **)&device_cumulative_dist, sizeof(int) * 256);											//
+
+	cudaMemcpy(device_image, host_image, sizeof(char) * (width * height * 3), cudaMemcpyHostToDevice);	//copy to gpu
+	cudaMemcpy(device_histogram, host_histogram, sizeof(int) * 256, cudaMemcpyHostToDevice);			//
 
 	int block_size = 256;
 	int grid_size = (width * height + (block_size - 1))/block_size;
 
 	make_histogram<<<grid_size, block_size>>> (device_image, width, height, device_histogram);		//call first kernel
 
-	CUDA_CHECK_RETURN(cudaMemcpy(host_histogram, device_histogram, sizeof(int) * 256, cudaMemcpyDeviceToHost));
+	cudaMemcpy(host_histogram, device_histogram, sizeof(int) * 256, cudaMemcpyDeviceToHost);
 
 	host_cumulative_dist[0] = host_histogram[0];										//compute cumulative dist. in cpu
 																						//
@@ -136,25 +141,36 @@ int main(){
 		host_cumulative_dist[i] = host_histogram[i] + host_cumulative_dist[i-1];		//
 	}																					//
 
-	CUDA_CHECK_RETURN(cudaMemcpy(device_cumulative_dist, host_cumulative_dist, sizeof(int) * 256, cudaMemcpyHostToDevice));
-	CUDA_CHECK_RETURN(cudaMemcpy(device_equalized, host_equalized, sizeof(int) * 256, cudaMemcpyHostToDevice));
+	cudaMemcpy(device_cumulative_dist, host_cumulative_dist, sizeof(int) * 256, cudaMemcpyHostToDevice);
+	cudaMemcpy(device_equalized, host_equalized, sizeof(int) * 256, cudaMemcpyHostToDevice);
 
 	equalize<<<grid_size, block_size>>>(device_equalized, device_cumulative_dist, device_histogram, width, height);					//call second kernel
 
 	YUV2RGB<<<grid_size, block_size>>>(device_image, device_cumulative_dist, device_histogram, device_equalized, width, height);	//call third kernel
 
-	CUDA_CHECK_RETURN(cudaMemcpy(host_image, device_image, sizeof(char) * (width * height * 3), cudaMemcpyDeviceToHost));
+	gettimeofday(&end, NULL);
+
+	cudaMemcpy(host_image, device_image, sizeof(char) * (width * height * 3), cudaMemcpyDeviceToHost);
 
 	CUDA_CHECK_RETURN(cudaFree(device_image));						//free gpu
 	CUDA_CHECK_RETURN(cudaFree(device_histogram));					//
 	CUDA_CHECK_RETURN(cudaFree(device_equalized));					//
 	CUDA_CHECK_RETURN(cudaFree(device_cumulative_dist));			//
 
-	cout << "correctly freed memory \n";
+	double elapsed = ((end.tv_sec - start.tv_sec)*1000 + (end.tv_usec - start.tv_usec)/1000)/1.e3;
 
-	Mat final_image = Mat(Size(width,height), CV_8UC3, host_image);
-	imwrite("src/saved/desk.jpg", final_image);						//save equalized RGB image
-	cout << "correctly saved image";
+	cout << elapsed;
+
+	//cout << "correctly freed memory \n";
+
+	//Mat final_image = Mat(Size(width,height), CV_8UC3, host_image);
+
+	//string save_folder_path = "cuda-workspace/histogram_equalization_CUDA/src/saved/";
+	//string save_image_path = "desk.jpg";
+
+	//imwrite(save_folder_path + save_image_path, final_image);						//save equalized RGB image
+
+	//cout << "correctly saved image";
 
 	return 0;
 

@@ -224,4 +224,5 @@ src/histogram_equalization_CUDA.o : ../src/histogram_equalization_CUDA.cu \
     /usr/include/opencv2/highgui/highgui_c.h \
     /usr/include/opencv2/core/core_c.h \
     /usr/include/opencv2/imgproc/imgproc.hpp \
-    /usr/include/opencv2/imgproc/types_c.h
+    /usr/include/opencv2/imgproc/types_c.h \
+    /usr/include/x86_64-linux-gnu/sys/time.h
