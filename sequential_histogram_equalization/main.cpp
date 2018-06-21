@@ -85,15 +85,15 @@ void equalize(Mat image, int equalized[], int yuv_vector[]){
 int main(){
 
     // Load the image
-    Mat image = imread("../img/duomo.jpg");
+    Mat image = imread("../img/tree1.jpg", CV_LOAD_IMAGE_COLOR);
 
-    namedWindow("Original Image");
-    resize(image, image, Size(800,600));
-    imshow("Original Image", image);
+    //namedWindow("Original Image");
+    resize(image, image, Size(12800, 12800), INTER_NEAREST);
+    //imshow("Original Image", image);
 
     double start = omp_get_wtime();
 
-    int yuv_vector[image.rows*image.cols * 3];
+    int* yuv_vector = new int [image.rows * image.cols * 3];
 
     // Generate the histogram
     int histogram[256];
@@ -108,13 +108,15 @@ int main(){
 
     double end = omp_get_wtime();
 
-    cout << "elapsed time:" << end-start << "sec" << endl;
+    cout << end-start << endl;
 
     // Display equalized image
-    namedWindow("Equalized Image");
-    resize(image, image, Size(800,600));
-    imshow("Equalized Image",image);
+    //namedWindow("Equalized Image");
+    //resize(image, image, Size(800,800));
+    //imshow("Equalized Image",image);		uncomment to print the image
 
-    waitKey();
+    //waitKey();
+
     return 0;
+
 }

@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/Parallel-Histogram-Equalization/sequential_histogram_equalization"
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/sequential_histogram_equalization
 -- The C compiler identification is AppleClang 9.0.0.9000039
 -- The CXX compiler identification is AppleClang 9.0.0.9000039
 -- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
@@ -16,4 +16,4 @@
 -- Found OpenCV: /usr/local (found version "3.4.1") 
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/Parallel-Histogram-Equalization/sequential_histogram_equalization/cmake-build-debug
+-- Build files have been written to: /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/sequential_histogram_equalization/cmake-build-debug

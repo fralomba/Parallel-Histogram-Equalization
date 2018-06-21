@@ -99,7 +99,7 @@ void equalize(Mat image, int equalized[], int yuv_vector[]){
 int main(){
 
     // Load the image
-    Mat image = imread("../img/desk.jpg");
+    Mat image = imread("../img/duomo2.jpg");
 
     namedWindow("Original Image");
     resize(image, image, Size(800,600));
@@ -107,7 +107,7 @@ int main(){
 
     double start = omp_get_wtime();
 
-    int yuv_vector[image.rows*image.cols * 3];
+    int* yuv_vector = new int[image.rows*image.cols * 3];
 
     // Generate the histogram
     int histogram[256];
@@ -122,7 +122,7 @@ int main(){
 
     double end = omp_get_wtime();
 
-    cout << "elapsed time:" << end-start << "sec" << endl;
+    cout << end-start << endl;
 
     // Display equalized image
     namedWindow("Equalized Image");

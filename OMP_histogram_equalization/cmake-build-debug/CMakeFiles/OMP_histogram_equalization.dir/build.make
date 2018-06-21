@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization"
+CMAKE_SOURCE_DIR = /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization/cmake-build-debug"
+CMAKE_BINARY_DIR = /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/OMP_histogram_equalization.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/OMP_histogram_equalization.dir/flags.make
 
 CMakeFiles/OMP_histogram_equalization.dir/main.cpp.o: CMakeFiles/OMP_histogram_equalization.dir/flags.make
 CMakeFiles/OMP_histogram_equalization.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OMP_histogram_equalization.dir/main.cpp.o"
-	/usr/local/Cellar/llvm/6.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OMP_histogram_equalization.dir/main.cpp.o -c "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization/main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OMP_histogram_equalization.dir/main.cpp.o"
+	/usr/local/Cellar/llvm/6.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OMP_histogram_equalization.dir/main.cpp.o -c /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization/main.cpp
 
 CMakeFiles/OMP_histogram_equalization.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OMP_histogram_equalization.dir/main.cpp.i"
-	/usr/local/Cellar/llvm/6.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization/main.cpp" > CMakeFiles/OMP_histogram_equalization.dir/main.cpp.i
+	/usr/local/Cellar/llvm/6.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization/main.cpp > CMakeFiles/OMP_histogram_equalization.dir/main.cpp.i
 
 CMakeFiles/OMP_histogram_equalization.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OMP_histogram_equalization.dir/main.cpp.s"
-	/usr/local/Cellar/llvm/6.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization/main.cpp" -o CMakeFiles/OMP_histogram_equalization.dir/main.cpp.s
+	/usr/local/Cellar/llvm/6.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization/main.cpp -o CMakeFiles/OMP_histogram_equalization.dir/main.cpp.s
 
 CMakeFiles/OMP_histogram_equalization.dir/main.cpp.o.requires:
 
@@ -134,7 +134,7 @@ OMP_histogram_equalization: /usr/local/lib/libopencv_objdetect.3.4.1.dylib
 OMP_histogram_equalization: /usr/local/lib/libopencv_imgproc.3.4.1.dylib
 OMP_histogram_equalization: /usr/local/lib/libopencv_core.3.4.1.dylib
 OMP_histogram_equalization: CMakeFiles/OMP_histogram_equalization.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable OMP_histogram_equalization"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable OMP_histogram_equalization"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OMP_histogram_equalization.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -151,6 +151,6 @@ CMakeFiles/OMP_histogram_equalization.dir/clean:
 .PHONY : CMakeFiles/OMP_histogram_equalization.dir/clean
 
 CMakeFiles/OMP_histogram_equalization.dir/depend:
-	cd "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization" "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization" "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization/cmake-build-debug" "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization/cmake-build-debug" "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization/cmake-build-debug/CMakeFiles/OMP_histogram_equalization.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization/cmake-build-debug /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization/cmake-build-debug /Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization/cmake-build-debug/CMakeFiles/OMP_histogram_equalization.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/OMP_histogram_equalization.dir/depend
 

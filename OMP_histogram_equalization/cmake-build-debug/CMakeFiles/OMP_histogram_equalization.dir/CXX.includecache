@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/final/OMP_histogram_equalization/main.cpp
+/Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/OMP_histogram_equalization/main.cpp
 omp.h
 -
 iostream

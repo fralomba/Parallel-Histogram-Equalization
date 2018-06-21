@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/Parallel-Histogram-Equalization/sequential_histogram_equalization/main.cpp" "/Users/francesco/Documents/Università/magistrale/esami/Parallel Computing/Parallel-Histogram-Equalization/sequential_histogram_equalization/cmake-build-debug/CMakeFiles/sequential_histogram_equalization.dir/main.cpp.o"
+  "/Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/sequential_histogram_equalization/main.cpp" "/Users/francesco/Documents/Università/magistrale/esami/Parallel_Computing/Parallel-Histogram-Equalization/sequential_histogram_equalization/cmake-build-debug/CMakeFiles/sequential_histogram_equalization.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
