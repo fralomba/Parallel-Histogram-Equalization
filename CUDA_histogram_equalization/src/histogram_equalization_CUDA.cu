@@ -20,9 +20,6 @@
 using namespace std;
 using namespace cv;
 
-static void CheckCudaErrorAux (const char *, unsigned, const char *, cudaError_t);
-#define CUDA_CHECK_RETURN(value) CheckCudaErrorAux(__FILE__,__LINE__, #value, value)
-
 __global__ void make_histogram(unsigned char *image, int width, int height, int *histogram){
 
 	int idx = blockIdx.x * blockDim.x + threadIdx.x;
@@ -83,18 +80,14 @@ __global__ void YUV2RGB(unsigned char *image, int *cumulative_dist,int *histogra
 
 }
 
-static void CheckCudaErrorAux (const char *file, unsigned line, const char *statement, cudaError_t err){
-	if (err == cudaSuccess)
-		return;
-	std::cerr << statement<<" returned " << cudaGetErrorString(err) << "("<<err<< ") at "<<file<<":"<<line << std::endl;
-	exit (1);
-}
-
 int main(){
 	string folder_path = "/home/lombardiminervini/cuda-workspace/histogram_equalization_CUDA/src/images/";
-	string image_path = "car.jpg";
+	string image_path = "tree.jpg";
 
 	Mat image = imread(folder_path + image_path);		//load the image
+	Size size (100, 100);
+
+	resize(image, image, size);
 
 	if(!image.data){
 		cout << "no image found";
@@ -148,14 +141,14 @@ int main(){
 
 	YUV2RGB<<<grid_size, block_size>>>(device_image, device_cumulative_dist, device_histogram, device_equalized, width, height);	//call third kernel
 
-	gettimeofday(&end, NULL);
-
 	cudaMemcpy(host_image, device_image, sizeof(char) * (width * height * 3), cudaMemcpyDeviceToHost);
 
-	CUDA_CHECK_RETURN(cudaFree(device_image));						//free gpu
-	CUDA_CHECK_RETURN(cudaFree(device_histogram));					//
-	CUDA_CHECK_RETURN(cudaFree(device_equalized));					//
-	CUDA_CHECK_RETURN(cudaFree(device_cumulative_dist));			//
+	cudaFree(device_image);						//free gpu
+	cudaFree(device_histogram);					//
+	cudaFree(device_equalized);					//
+	cudaFree(device_cumulative_dist);			//
+
+	gettimeofday(&end, NULL);
 
 	double elapsed = ((end.tv_sec - start.tv_sec)*1000 + (end.tv_usec - start.tv_usec)/1000)/1.e3;
 
