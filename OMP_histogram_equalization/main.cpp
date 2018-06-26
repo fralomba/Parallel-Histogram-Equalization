@@ -102,7 +102,7 @@ int main(){
     Mat image = imread("../img/duomo2.jpg");
 
     namedWindow("Original Image");
-    resize(image, image, Size(800,600));
+    resize(image, image, Size(400,300));
     imshow("Original Image", image);
 
     double start = omp_get_wtime();
@@ -126,7 +126,7 @@ int main(){
 
     // Display equalized image
     namedWindow("Equalized Image");
-    resize(image, image, Size(800,600));
+    resize(image, image, Size(400,300));
     imshow("Equalized Image",image);
 
     waitKey();

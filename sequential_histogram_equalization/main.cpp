@@ -15,8 +15,6 @@ void make_histogram(Mat image, int histogram[], int yuv_vector[])
         histogram[i] = 0;
     }
 
-    // calculate the no of pixels for each intensity values
-
     for(int i = 0; i < image.rows; i++) {
         for (int j = 0; j < image.cols; j++) {
 
@@ -88,7 +86,7 @@ int main(){
     Mat image = imread("../img/tree1.jpg", CV_LOAD_IMAGE_COLOR);
 
     //namedWindow("Original Image");
-    resize(image, image, Size(12800, 12800), INTER_NEAREST);
+    resize(image, image, Size(300, 400), INTER_NEAREST);
     //imshow("Original Image", image);
 
     double start = omp_get_wtime();
