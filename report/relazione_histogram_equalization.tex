@@ -9,7 +9,6 @@
 \usepackage{caption}
 \usepackage{subfig}
 \usepackage{algorithm2e}
-\usepackage{listings}
 
 \graphicspath{ {img/} }
 
@@ -202,7 +201,7 @@ The first one receives the image histogram as formal parameter and computes the 
 \subsubsection{OpenMP Parallel Version}
 The first technology used to parallelize the procedure above is OpenMP, an API which supports multi-platform shared memory multiprocessing programming in C, C++ and Fortran. 
 
-The OpenMP parallel version of the code is very similar to the sequential one, and so no pseudo code is reported below. Anyway, as OpenMP rules, the same functions implemented in the sequential version have been written into a particular OMP structure that parallelizes the sequential for loops: \textit{\#pragma omp parallel for}. The use of this structure has been really easy and convenient: in fact it is made in such a way as to decide the number of threads to be used, depending on the task to execute and the machine which runs it.
+The OpenMP parallel version of the code is implemented as the sequential one, with the main difference that, as OpenMP rules, the same functions implemented in the sequential version have been written into a particular OMP structure that parallelizes the sequential for loops: \textit{\#pragma omp parallel for}. The use of this structure has been really easy and convenient: in fact it is made in such a way as to decide the number of threads to be used, depending on the task to execute and the machine which runs it.
 
 \subsubsection{CUDA Parallel Version}
 The second technology used to parallelize Histogram Equalization is CUDA, a parallel computing platform and application programming interface (API) model created by Nvidia. It allows to use a CUDA-enabled GPU for general purpose processing. The platform is designed to work with programming languages such as C, C++, and Fortran. For this project we ran CUDA code on a NVDIA Titan-X GPU.
