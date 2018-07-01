@@ -218,7 +218,7 @@ The main idea for task's parallelization has been the following: if possible, de
 A special zoom has to be done on GPU management: we have allocated a char array to represent the image and three int[256] arrays in order to store image histogram, image equalized histogram and the cumulative distribution function. After that we have copied them from the host (CPU) to the device (GPU) through the function \textit{cudaMemCpy}. Next, the functions illustrated in sequential version have been reproduced as three CUDA kernels: \textit{make\_histogram}, \textit{equalize} and \textit{YUV2RGB}: they have been called in the same order as before, computing the equalization. Finally we have freed the GPU through the function \textit{cudaFree} and saved the results.
 
 \section{Results}
-Tests have been performed using the same set of images, from 100x100px to 12800x12800px in 8 width x height steps obtained doubling these dimensions iteratively. All results have been obtained mediating over 10 run. They have also been evaluated when varying the number of threads until saturation (relatively to the machine used for testing). 
+Tests have been performed using the same set of images, from 100x100px to 12800x12800px in 8 width x height steps obtained doubling these dimensions iteratively. All results have been achieved mediating over 10 run. They have also been evaluated when varying the number of threads until saturation (relatively to the machine used for testing). 
 
 With OpenMP version we have tested the images above with 2, 4 and 8 threads, with the following result:
 %immagine OMP
