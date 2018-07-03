@@ -2,6 +2,6 @@
 Sequential, OpenMP and CUDA image histogram equalization.
 
 An application example:
-![](code/CUDA_histogram_equalization/src/images/duomo2.png=250x250)
+![alt text](code/CUDA_histogram_equalization/src/images/duomo2.png&s=200 "Original Image")
 
-![](code/CUDA_histogram_equalization/src/saved/duomo2_eq.png=250x250)
+![alt text](code/CUDA_histogram_equalization/src/saved/duomo2_eq.png&s=200 "Equalized Image")
